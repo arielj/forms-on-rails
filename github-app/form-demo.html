@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Demo</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <style>
+      [name="selected[]"] {
+        visibility: hidden;
+      }
+      tr:hover [name="selected[]"],
+      table:has([name="selected[]"]:checked) [name="selected[]"] {
+        visibility: visible;
+      }
+      .inline-toggle,
+      .inline-toggle:checked ~ .show-edit,
+      .inline-toggle:checked ~ span,
+      .inline-toggle:checked ~ .archive,
+      .inline-toggle:checked ~ .delete,
+      .inline-toggle:not(:checked) ~ .cancel-edit,
+      .inline-toggle:not(:checked) ~ .save-edit,
+      .inline-toggle:not(:checked) ~ [name="name"] {
+        display: none;
+      }
+    </style>
+    <table>
+      <tr>
+        <td><input type="checkbox" name="selected[]" value="1" /></td>
+        <td>
+          <form action="">
+            <input type="checkbox" id="inline-edit-1" class="inline-toggle" />
+            <span>Item 1</span>
+            <input type="text" value="Item 1" name="name" />
+            <button type="button" class="show-edit">
+              <label for="inline-edit-1">Edit</label>
+            </button>
+            <button type="reset" class="cancel-edit">Cancel</button>
+            <button type="submit" class="save-edit">Save</button>
+            <button type="submit" class="archive">Archive</button>
+            <button type="submit" class="delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="selected[]" value="1" /></td>
+        <td>Item 1</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="selected[]" value="1" /></td>
+        <td>Item 1</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="selected[]" value="1" /></td>
+        <td>Item 1</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="selected[]" value="1" /></td>
+        <td>Item 1</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="selected[]" value="1" /></td>
+        <td>Item 1</td>
+      </tr>
+    </table>
+  </body>
+</html>

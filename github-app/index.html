@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Forms on Rails</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/beige.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Forms on Rails</h1>
+          <p>por Ariel Juodziukynas</p>
+        </section>
+
+        <section>
+          <section>
+            <h2>Múltiples submit</h2>
+            <p>Un formulario puede tener más de un botón para enviarlo.</p>
+            <p>
+              El valor del botón presionado se envía en los parámetros del
+              request.
+            </p>
+          </section>
+          <section>
+            <h2>Demo 1</h2>
+            <div class="fragment">
+              <p>No usar "action" como el nombre del botón.</p>
+              <p>
+                También funciona con inputs, pero el valor es el texto visible.
+              </p>
+              <p>
+                No es necesario que todos los botones tengan el mismo nombre.
+              </p>
+              <p>"Enter" equivale a enviar con el primer botón que aparece.</p>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Múltiples action/method</h2>
+            <p>
+              Los diferentes botones pueden tener distinto "action" (url) y
+              "method" (GET|POST|PATCH|DELETE) independiente del form.
+            </p>
+          </section>
+          <section>
+            <h2>Atributos formaction y formmethod</h2>
+            <p>
+              Ambos se pueden usar en cualquier elemento que envía el
+              formulario.
+            </p>
+            <p>
+              `formmethod` sólo acepta `post` y `get` como valores, pero usando
+              una convención de Rails se pueden user otros métodos HTTP.
+            </p>
+          </section>
+          <section>
+            <h2>Demo 2</h2>
+            <div class="fragment">
+              <p>
+                No se pueden tener varios botones con el mismo método HTTP no
+                estándard con distinto nombre/valor.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Inputs sin form</h2>
+            <p>Los inputs no necesitan ser hijos de un formulario.</p>
+            <p>Se pueden asociar mediante ids y el atributo `form`.</p>
+          </section>
+          <section>
+            <h2>Demo 3</h2>
+            <div class="fragment">
+              <p>No se puede asociar un mismo input a más de un form.</p>
+              <p></p>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Custom Form Builder</h2>
+            <p>
+              Permiten definir métodos y templates específicos del builder sin
+              modificar la vista.
+            </p>
+          </section>
+          <section>
+            <h2>Demo 4</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Formularios anidados</h2>
+            <p>
+              Un formulario puede crear un objeto y objectos asociados en un
+              mismo request.
+            </p>
+            <p>Sirve tento para relaciones uno-a-uno y uno-a-muchos.</p>
+          </section>
+
+          <section>
+            <h3>La convención de la estructura de los parámetros</h3>
+            <p>Para relaciones uno-a-uno:</p>
+            <pre>
+              <code data-trim>
+								{
+									user: {
+										address_attributes: {
+											street: 'Calle Falsa 123',
+											city: 'Springfield'
+										}
+									}
+								}
+
+								# user[address_attributes][street]=Calle+Falsa+123&user[address_attributes][city]=Springfield
+              </code>
+						</pre>
+          </section>
+
+          <section>
+            <h3>La convención de la estructura de los parámetros</h3>
+            <p>Para relaciones uno-a-muchos:</p>
+            <pre>
+              <code data-trim data-line-numbers="3|4-8|9-14|15-19|23">
+								{
+									user: {
+										pets_attributes: {
+											1: {
+												id: 1,
+												name: '',
+												breed: ''
+											},
+											2: {
+												id: 2,
+												name: '',
+												breed: '',
+												:_destroy => 1
+											},
+											3: {
+												# hashes sin atributo "id" para crear nuevos objetos
+												name: '',
+												breed: ''
+											}
+										}
+									}
+								}
+								# user[pets_attributes][1][id]=1&...
+							</code>
+						</pre>
+          </section>
+
+          <section>
+            <h3>`accepts_nested_attributes_for`</h3>
+            <p>
+              Agrega métodos al modelo para asignar attributos de objectos
+              asociados.
+            </p>
+          </section>
+
+          <section>
+            <h3>`fields_for`</h3>
+            <p>
+              Se usa dentro de uno form para generar un FormBuilder para otro
+              object.
+            </p>
+          </section>
+
+          <section>
+            <h3>Strong Parameters</h3>
+            <p>Hay que permitir los parámetros de acuerdo a la convención.</p>
+          </section>
+
+          <section>
+            <h2>Demo 5</h2>
+          </section>
+
+          <section>
+            <h3>Agregar/quitar elementos sin recargar</h3>
+          </section>
+
+          <section>
+            <h2>Demo 6</h2>
+          </section>
+        </section>
+
+        <section>
+          <h2>Bonus: Visibilidad de elementos sin usar JavaScript</h2>
+          <p>Mostrar todos los checkboxes si uno está checkeado.</p>
+          <p>Mostrar/ocultar campos.</p>
+        </section>
+
+        <section>
+          <h1>Gracias!</h1>
+          <p>Preguntas?</p>
+
+          <small>
+            <ul>
+              <li>
+                App:
+                <a href="https://github" target="_blank"
+                  >https://guides.rubyonrails.org/form_helpers.html</a
+                >
+              </li>
+              <li>
+                Slides:
+                <a href="github" target="_blank"
+                  >https://guides.rubyonrails.org/form_helpers.html</a
+                >
+              </li>
+              <li>
+                Railsguides:
+                <a
+                  href="https://guides.rubyonrails.org/form_helpers.html"
+                  target="_blank"
+                  >https://guides.rubyonrails.org/form_helpers.html</a
+                >
+              </li>
+              <li>
+                MDN:
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"
+                  target="_blank"
+                  >https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button</a
+                >
+              </li>
+              <li>
+                vanilla-nested:
+                <a
+                  href="https://github.com/arielj/vanilla-nested"
+                  target="_blank"
+                  >https://github.com/arielj/vanilla-nested</a
+                >
+              </li>
+            </ul>
+          </small>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
