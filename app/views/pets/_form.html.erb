@@ -1,0 +1,10 @@
+<%= form_with(model: pet, builder: CustomFormBuilder) do |form| %>
+  <%= form.text_field :name %>
+  <%= form.text_area :bio %>
+  <%= form.text_field :color %>
+  <%= form.text_field :breed %>
+  <%= form.text_field :species %>
+  <div>
+    <%= form.submit "Guardar" %>
+  </div>
+<% end %>

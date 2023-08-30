@@ -1,0 +1,15 @@
+<h1>Usuarios</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Ver usuario", user %> |
+      <%= link_to "Editar usuario", user %> |
+      <%= link_to "Editar usuario (2)", edit_dynamic_user_path(user) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Nuevo usuario", new_user_path %> |
+<%= link_to "Nuevo usuario (2)", new_dynamic_users_path %>

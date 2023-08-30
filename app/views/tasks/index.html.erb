@@ -1,0 +1,20 @@
+<h1>Tareas</h1>
+
+<table id="tasks">
+  <% @tasks.each do |task| %>
+    <%= render task %>
+  <% end %>
+</table>
+
+<h4>Aplicar a seleccionados:</h4>
+<%= form_with url: bulk_operation_tasks_path, method: :post, html: { id: "bulk_form" } do |form| %>
+  <%= button_tag "Archivar", type: "submit", name: "operation", value: "archive" %>
+  <%= button_tag "Des-archivar", type: "submit", name: "operation", value: "unarchive" %>
+  <%= button_tag "Borrar", type: "submit", name: "_method", formmethod: "post", value: "delete" %>
+<% end %>
+
+<h3>Nueva tarea</h3>
+<%= form_with model: Task.new do |form| %>
+  <%= form.text_field :title, placeholder: "Título" %>
+  <%= submit_tag "Guardar" %>
+<% end %>

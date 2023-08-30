@@ -1,0 +1,9 @@
+<h1>Posts</h1>
+
+<ul id="posts">
+  <% @posts.each do |post| %>
+    <li><%= link_to "#{post.title} (ID: #{post.id})", post %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Nuevo post", new_post_path %>

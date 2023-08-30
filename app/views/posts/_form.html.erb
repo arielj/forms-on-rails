@@ -1,0 +1,38 @@
+<%= form_with(model: post, html: { id: "post_form" }) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red" class="errors">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div>
+      <%= form.label :title, style: "display: block" %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div>
+      <%= form.label :content, style: "display: block" %>
+      <%= form.text_area :content %>
+    </div>
+
+    <div>
+      <%= button_tag "Guardar", name: "operation", value: "save" %>
+      <%= button_tag "Preview", name: "operation", value: "preview" %>
+      <% if post.new_record? %>
+        <%= button_tag "Guardar y agregar otro", name: "operation", value: "save_and_add_new" %>
+      <% end %>
+    </div>
+  </fieldset>
+
+  <div id="preview">
+    <b>Preview</b>
+    <%= render post %>
+  </div>
+<% end %>

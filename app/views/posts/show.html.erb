@@ -1,0 +1,8 @@
+<%= render @post %>
+
+<div>
+  <%= link_to "Editar post", edit_post_path(@post) %> |
+  <%= link_to "Volver", posts_path %>
+
+  <%= button_to "Borrar", @post, method: :delete %>
+</div>

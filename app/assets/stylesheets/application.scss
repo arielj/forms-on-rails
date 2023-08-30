@@ -1,0 +1,144 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  max-width: 95%;
+}
+
+#back-to-home {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.user_form {
+  display: grid;
+  grid-template-areas: "info address" "pets pets";
+  gap: 1rem;
+
+  #personal {
+    grid-area: info;
+  }
+  #address {
+    grid-area: address;
+  }
+  #user_pets {
+    grid-area: pets;
+    .pet_fields {
+      button,
+      .vanilla-nested-remove {
+        align-self: center;
+      }
+    }
+  }
+}
+
+.address_fields,
+.pet_fields {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.field_with_errors {
+  input,
+  textarea {
+    border: 1px solid red;
+  }
+  & + .error-detail {
+    color: red;
+    font-size: 1.5rem;
+  }
+}
+
+#users > div {
+  display: flex;
+  gap: 1rem;
+}
+
+#tasks {
+  .button,
+  button {
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1;
+    margin-bottom: 0;
+  }
+  input {
+    margin-bottom: 0;
+  }
+
+  [name="selected[]"] {
+    visibility: hidden;
+  }
+  tr:hover [name="selected[]"],
+  [name="selected[]"]:checked,
+  &:has([name="selected[]"]:checked) [name="selected[]"] {
+    visibility: visible;
+  }
+
+  .inline-toggle,
+  .inline-toggle:checked ~ label,
+  .inline-toggle:checked ~ span,
+  .inline-toggle:checked ~ [value="archive"],
+  .inline-toggle:checked ~ [value="unarchive"],
+  .inline-toggle:checked ~ [value="delete"],
+  .inline-toggle:not(:checked) ~ [type="reset"],
+  .inline-toggle:not(:checked) ~ [value="save"],
+  .inline-toggle:not(:checked) ~ [name="task[title]"] {
+    display: none;
+  }
+
+  form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    input[type="text"],
+    span {
+      flex-grow: 1;
+    }
+  }
+
+  td:first-child {
+    width: 25px;
+  }
+}
+
+.notice {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+#post_form {
+  display: grid;
+  grid-template-areas: "error error" "form preview";
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  .errors {
+    grid-area: error;
+  }
+  fieldset {
+    grid-area: form;
+  }
+  #preview {
+    grid-area: preview;
+  }
+  textarea {
+    min-height: 300px;
+  }
+}

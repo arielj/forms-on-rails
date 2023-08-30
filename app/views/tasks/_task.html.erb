@@ -1,0 +1,20 @@
+<tr id="<%= dom_id task %>">
+  <td><%= check_box_tag "selected[]", task.id, false, form: "bulk_form", id: "selected_#{task.id}" %></td>
+  <td>
+    <%= form_with model: task do |form| %>
+      <input type="checkbox" id="inline-edit-<%= task.id %>" class="inline-toggle" />
+      <span><%= task.title %></span>
+      <%= form.text_field :title %>
+      <button type="reset">Cancelar</button>
+      <%= button_tag "Guardar", name: "operation", value: "save" %>
+      <% if task.archived %>
+        <%= button_tag "Des-archivar", name: "operation", value: "unarchive" %>
+      <% else %>
+        <%= button_tag "Archivar", name: "operation", value: "archive" %>
+      <% end %>
+      <label for="inline-edit-<%= task.id %>" class="button">Edit</label>
+      <%= button_tag "Borrar", formmethod: "post", name: "_method", value: "delete", data: { confirm: "Seguro?" } %>
+    <% end %>
+  </td>
+</tr>
+

@@ -1,0 +1,32 @@
+<% url = user.persisted? ? update_dynamic_user_path(user) : new_dynamic_users_path %>
+
+<%= form_with(model: user, url: url, builder: CustomFormBuilder, class: "user_form") do |form| %>
+  <div id="personal">
+    <h3>Datos personales</h3>
+    <%= form.text_field :name %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div id="address">
+    <h3>Dirección</h3>
+    <%= form.fields_for :address do |address_form| %>
+      <% render "addresses/form_fields", form: address_form %>
+    <% end %>
+  </div>
+
+  <div id="user_pets">
+    <h3>Mascotas</h3>
+    <div id="wrapper_pets">
+      <%= form.fields_for :pets do |pet_form| %>
+        <% render "pet_fields", form: pet_form %>
+      <% end %>
+    </div>
+    <%= link_to_add_nested(form, :pets, '#wrapper_pets') do %>
+      <button>Agregar Mascota</button>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.button "Guardar", type: "submit", name: "operation", value: "save" %>
+  </div>
+<% end %>

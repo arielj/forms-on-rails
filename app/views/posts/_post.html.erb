@@ -1,0 +1,6 @@
+<% markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {}) %>
+
+<div id="<%= dom_id post %>">
+  <h1><%= post.title %></h1>
+  <%= Kramdown::Document.new(post.content || "", syntax_highlighter: :coderay).to_html.html_safe %>
+</div>

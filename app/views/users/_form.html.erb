@@ -1,0 +1,26 @@
+<%= form_with(model: user, builder: CustomFormBuilder, class: "user_form") do |form| %>
+  <div id="personal">
+    <h3>Datos personales</h3>
+    <%= form.text_field :name %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div id="address">
+    <h3>Dirección</h3>
+    <%= form.fields_for :address do |address_form| %>
+      <% render "addresses/form_fields", form: address_form %>
+    <% end %>
+  </div>
+
+  <div id="user_pets">
+    <h3>Mascotas</h3>
+    <%= form.fields_for :pets do |pet_form| %>
+      <% render "pets/form_fields", form: pet_form %>
+    <% end %>
+    <%= button_tag "Agregar Mascota", name: "operation", value: "add_pet" %>
+  </div>
+
+  <div>
+    <%= form.button "Guardar", type: "submit", name: "operation", value: "save" %>
+  </div>
+<% end %>

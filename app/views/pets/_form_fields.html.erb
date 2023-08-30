@@ -1,0 +1,15 @@
+<% if form.object.marked_for_destruction? %>
+  <%= form.hidden_field :_destroy, value: "1" %>
+<% else %>
+  <div class="pet_fields">
+    <%= form.text_field :name %>
+    <%= form.text_area :bio %>
+    <%= form.text_field :color %>
+    <%= form.text_field :breed %>
+    <%= form.text_field :species %>
+    <label>
+      Borrar:
+      <%= form.check_box :_destroy, value: "1" %>
+    </label>
+  </div>
+<% end %>

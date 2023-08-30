@@ -1,0 +1,9 @@
+<%= render @user %>
+
+<div>
+  <%= link_to "Editar usuario", edit_user_path(@user) %> |
+  <%= link_to "Editar usuario (2)", edit_dynamic_user_path(@user) %> |
+  <%= link_to "Volver", users_path %>
+
+  <%= button_to "Borrar", @user, method: :delete %>
+</div>
