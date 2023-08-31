@@ -14,9 +14,11 @@
 
   <div id="user_pets">
     <h3>Mascotas</h3>
-    <%= form.fields_for :pets do |pet_form| %>
-      <% render "pets/form_fields", form: pet_form %>
-    <% end %>
+    <div id="wrapper_pets">
+      <%= form.fields_for :pets do |pet_form| %>
+        <% render "pets/form_fields", form: pet_form %>
+      <% end %>
+    </div>
     <%= button_tag "Agregar Mascota", name: "operation", value: "add_pet" %>
   </div>
 
