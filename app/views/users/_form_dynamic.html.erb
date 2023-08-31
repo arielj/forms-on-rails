@@ -9,7 +9,7 @@
 
   <div id="address">
     <h3>Dirección</h3>
-    <%= form.fields_for :address do |address_form| %>
+    <%= form.fields_for :address, include_id: false do |address_form| %>
       <% render "addresses/form_fields", form: address_form %>
     <% end %>
   </div>

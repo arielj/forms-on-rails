@@ -22,98 +22,119 @@
         <section>
           <h1>Forms on Rails</h1>
           <p>por Ariel Juodziukynas</p>
+          <small>Slides: https://tinyurl.com/formsonrails</small>
         </section>
 
         <section>
           <section>
             <h2>Múltiples submit</h2>
-            <p>Un formulario puede tener más de un botón para enviarlo.</p>
-            <p>
-              El valor del botón presionado se envía en los parámetros del
-              request.
-            </p>
+            <ul>
+              <p>Un formulario puede tener más de un botón para enviarlo.</p>
+              <p>
+                El valor del botón presionado se envía en los parámetros del
+                request.
+              </p>
+            </ul>
           </section>
           <section>
             <h2>Demo 1</h2>
-            <div class="fragment">
-              <p>No usar "action" como el nombre del botón.</p>
-              <p>
+            <ul class="fragment list">
+              <li>No usar "action" como el nombre del botón.</li>
+              <li>
                 También funciona con inputs, pero el valor es el texto visible.
-              </p>
-              <p>
+              </li>
+              <li>
                 No es necesario que todos los botones tengan el mismo nombre.
-              </p>
-              <p>"Enter" equivale a enviar con el primer botón que aparece.</p>
-            </div>
+              </li>
+              <li>
+                "Enter" equivale a enviar con el primer botón que aparece.
+              </li>
+            </ul>
           </section>
         </section>
 
         <section>
           <section>
             <h2>Múltiples action/method</h2>
-            <p>
-              Los diferentes botones pueden tener distinto "action" (url) y
-              "method" (GET|POST|PATCH|DELETE) independiente del form.
-            </p>
+            <ul>
+              <p>
+                Los diferentes botones pueden tener distinto "action" (url) y
+                "method" (GET|POST|PATCH|DELETE) independiente del form.
+              </p>
+            </ul>
           </section>
           <section>
             <h2>Atributos formaction y formmethod</h2>
-            <p>
-              Ambos se pueden usar en cualquier elemento que envía el
-              formulario.
-            </p>
-            <p>
-              `formmethod` sólo acepta `post` y `get` como valores, pero usando
-              una convención de Rails se pueden user otros métodos HTTP.
-            </p>
+            <ul>
+              <li>
+                Ambos se pueden usar en cualquier elemento que envía el
+                formulario.
+              </li>
+              <li>
+                `formmethod` sólo acepta `post` y `get` como valores, pero
+                usando una convención de Rails se pueden user otros métodos
+                HTTP.
+              </li>
+            </ul>
           </section>
           <section>
             <h2>Demo 2</h2>
-            <div class="fragment">
-              <p>
+            <ul class="fragment">
+              <li>
                 No se pueden tener varios botones con el mismo método HTTP no
                 estándard con distinto nombre/valor.
-              </p>
-            </div>
+              </li>
+            </ul>
           </section>
         </section>
 
         <section>
           <section>
             <h2>Inputs sin form</h2>
-            <p>Los inputs no necesitan ser hijos de un formulario.</p>
-            <p>Se pueden asociar mediante ids y el atributo `form`.</p>
+            <ul>
+              <p>Los inputs no necesitan ser hijos de un formulario.</p>
+              <p>Se pueden asociar mediante ids y el atributo `form`.</p>
+            </ul>
           </section>
           <section>
             <h2>Demo 3</h2>
-            <div class="fragment">
-              <p>No se puede asociar un mismo input a más de un form.</p>
-              <p></p>
-            </div>
+            <ul class="fragment">
+              <li>No se puede asociar un mismo input a más de un form.</li>
+            </ul>
           </section>
         </section>
 
         <section>
           <section>
             <h2>Custom Form Builder</h2>
-            <p>
-              Permiten definir métodos y templates específicos del builder sin
-              modificar la vista.
-            </p>
+            <ul>
+              <p>
+                Permiten definir métodos y templates específicos del builder sin
+                modificar la vista.
+              </p>
+            </ul>
           </section>
           <section>
             <h2>Demo 4</h2>
+            <ul class="fragment">
+              <li>
+                Se pueden definir nuevos métodos, no es necesario respetar o
+                sobreescribir los métodos del FormBuilder base.
+              </li>
+            </ul>
           </section>
         </section>
 
         <section>
           <section>
             <h2>Formularios anidados</h2>
-            <p>
-              Un formulario puede crear un objeto y objectos asociados en un
-              mismo request.
-            </p>
-            <p>Sirve tento para relaciones uno-a-uno y uno-a-muchos.</p>
+            <ul>
+              <p>
+                Un formulario puede crear un objeto y objectos asociados en un
+                mismo request.
+              </p>
+              <p>Sirve tento para relaciones uno-a-uno y uno-a-muchos.</p>
+            </ul>
           </section>
 
           <section>
@@ -169,23 +190,29 @@
 
           <section>
             <h3>`accepts_nested_attributes_for`</h3>
-            <p>
-              Agrega métodos al modelo para asignar attributos de objectos
-              asociados.
-            </p>
+            <ul>
+              <p>
+                Agrega métodos al modelo para asignar attributos de objectos
+                asociados.
+              </p>
+            </ul>
           </section>
 
           <section>
             <h3>`fields_for`</h3>
-            <p>
-              Se usa dentro de uno form para generar un FormBuilder para otro
-              object.
-            </p>
+            <ul>
+              <p>
+                Se usa dentro de uno form para generar un FormBuilder para otro
+                object.
+              </p>
+            </ul>
           </section>
 
           <section>
             <h3>Strong Parameters</h3>
-            <p>Hay que permitir los parámetros de acuerdo a la convención.</p>
+            <ul>
+              <p>Hay que permitir los parámetros de acuerdo a la convención.</p>
+            </ul>
           </section>
 
           <section>
@@ -202,12 +229,6 @@
         </section>
 
         <section>
-          <h2>Bonus: Visibilidad de elementos sin usar JavaScript</h2>
-          <p>Mostrar todos los checkboxes si uno está checkeado.</p>
-          <p>Mostrar/ocultar campos.</p>
-        </section>
-
-        <section>
           <h1>Gracias!</h1>
           <p>Preguntas?</p>
 
@@ -215,14 +236,16 @@
             <ul>
               <li>
                 App:
-                <a href="https://github" target="_blank"
-                  >https://guides.rubyonrails.org/form_helpers.html</a
+                <a
+                  href="https://github.com/arielj/forms-on-rails"
+                  target="_blank"
+                  >https://github.com/arielj/forms-on-rails</a
                 >
               </li>
               <li>
                 Slides:
-                <a href="github" target="_blank"
-                  >https://guides.rubyonrails.org/form_helpers.html</a
+                <a href="https://tinyurl.com/formsonrails" target="_blank"
+                  >https://tinyurl.com/formsonrails</a
                 >
               </li>
               <li>

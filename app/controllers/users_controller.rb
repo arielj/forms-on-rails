@@ -102,8 +102,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(
         :name, :lastname,
-        pets_attributes: [:id, :name, :bio, :color, :breed, :species, :_destroy],
-        address_attributes: [:street, :city, :state]
+        address_attributes: [:street, :city, :state],
+        pets_attributes: [:id, :name, :bio, :color, :breed, :species, :_destroy]
       )
     end
 end

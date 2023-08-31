@@ -19,10 +19,15 @@ body {
 }
 
 #back-to-home {
-  position: fixed;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  position: sticky;
+  top: 0px;
+  display: block;
+  text-align: center;
+  background: #f9f9f9;
+  padding: 15px;
+  &:hover {
+    border: 0;
+  }
 }
 
 .user_form {
