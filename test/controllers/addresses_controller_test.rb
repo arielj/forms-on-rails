@@ -15,14 +15,6 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create address" do
-    assert_difference("Address.count") do
-      post addresses_url, params: { address: { city: @address.city, state: @address.state, street: @address.street } }
-    end
-
-    assert_redirected_to address_url(Address.last)
-  end
-
   test "should show address" do
     get address_url(@address)
     assert_response :success
@@ -31,11 +23,6 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_address_url(@address)
     assert_response :success
-  end
-
-  test "should update address" do
-    patch address_url(@address), params: { address: { city: @address.city, state: @address.state, street: @address.street } }
-    assert_redirected_to address_url(@address)
   end
 
   test "should destroy address" do

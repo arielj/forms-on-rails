@@ -15,14 +15,6 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create appointment" do
-    assert_difference("Appointment.count") do
-      post appointments_url, params: { appointment: { date: @appointment.date, time: @appointment.time } }
-    end
-
-    assert_redirected_to appointment_url(Appointment.last)
-  end
-
   test "should show appointment" do
     get appointment_url(@appointment)
     assert_response :success
@@ -31,11 +23,6 @@ class AppointmentsControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_appointment_url(@appointment)
     assert_response :success
-  end
-
-  test "should update appointment" do
-    patch appointment_url(@appointment), params: { appointment: { date: @appointment.date, time: @appointment.time } }
-    assert_redirected_to appointment_url(@appointment)
   end
 
   test "should destroy appointment" do

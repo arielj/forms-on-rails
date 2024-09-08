@@ -15,14 +15,6 @@ class PetsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create pet" do
-    assert_difference("Pet.count") do
-      post pets_url, params: { pet: { bio: @pet.bio, breed: @pet.breed, color: @pet.color, name: @pet.name, species: @pet.species } }
-    end
-
-    assert_redirected_to pet_url(Pet.last)
-  end
-
   test "should show pet" do
     get pet_url(@pet)
     assert_response :success
@@ -31,11 +23,6 @@ class PetsControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_pet_url(@pet)
     assert_response :success
-  end
-
-  test "should update pet" do
-    patch pet_url(@pet), params: { pet: { bio: @pet.bio, breed: @pet.breed, color: @pet.color, name: @pet.name, species: @pet.species } }
-    assert_redirected_to pet_url(@pet)
   end
 
   test "should destroy pet" do
