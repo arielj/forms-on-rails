@@ -58,7 +58,7 @@ gem 'kramdown', '~> 2.4'
 gem 'kramdown-syntax-coderay'
 
 # unless next?
-  gem 'composite_primary_keys'
+  gem 'normalizy'
 # end
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]

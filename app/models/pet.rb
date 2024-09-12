@@ -1,8 +1,8 @@
 class Pet < ApplicationRecord
   # if $next_rails
-  #   query_constraints :user, :group
+  #   normalizes :name, with: -> name { name.titleize }
   # else
-  #   self.primary_keys = :user_id, :group_id
+  normalizy :name, with: :titleize
   # end
 
   belongs_to :user
